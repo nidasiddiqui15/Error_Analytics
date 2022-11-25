@@ -5,7 +5,7 @@ from flask_restful import Resource, reqparse
 class Payload(Resource):
 
     def __init__(self):
-        """This is a payload"""
+        """This is a payload [location, content_type, provider, platfrom, error_code]"""
         parser = reqparse.RequestParser()
         self.location = parser.add_argument("location", action="append", type=str, required=True,
                                             help="This should be a location")
@@ -37,6 +37,7 @@ class Mulitiselection(Payload):
         self.con_type = self._error_code
 
     def post(self):
+        """Connection for Dynamnodb <TABLE>"""
         
         return {"location": self.m_name,
                 "content_type": self.con_partner,
